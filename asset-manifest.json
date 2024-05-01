@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/CC-Market-Insights-Report/static/css/main.8a902e49.css",
-    "main.js": "/CC-Market-Insights-Report/static/js/main.435c6fdf.js",
+    "main.css": "/CC-Market-Insights-Report/static/css/main.90edf323.css",
+    "main.js": "/CC-Market-Insights-Report/static/js/main.27f2af5f.js",
     "index.html": "/CC-Market-Insights-Report/index.html",
-    "main.8a902e49.css.map": "/CC-Market-Insights-Report/static/css/main.8a902e49.css.map",
-    "main.435c6fdf.js.map": "/CC-Market-Insights-Report/static/js/main.435c6fdf.js.map"
+    "main.90edf323.css.map": "/CC-Market-Insights-Report/static/css/main.90edf323.css.map",
+    "main.27f2af5f.js.map": "/CC-Market-Insights-Report/static/js/main.27f2af5f.js.map"
   },
   "entrypoints": [
-    "static/css/main.8a902e49.css",
-    "static/js/main.435c6fdf.js"
+    "static/css/main.90edf323.css",
+    "static/js/main.27f2af5f.js"
   ]
 }
