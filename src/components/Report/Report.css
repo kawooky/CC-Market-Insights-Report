@@ -1,0 +1,260 @@
+.p1 {
+  width: 100vw;
+  height: calc(100vw * (21 / 29.7));
+  background: linear-gradient(
+    to right,
+    var(--first-color),
+    var(--second-color)
+  );
+}
+
+.p1 h1 {
+  margin: 0;
+}
+
+.p1-left {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.p1-text {
+  /* background-color: antiquewhite; */
+  padding-left: 1vw;
+  padding-right: 1vw;
+  text-align: left;
+  border-left: 0.3vw solid #ffffff;
+  color: #ffffff;
+  font-size: 2vw;
+}
+
+.logo-p1 {
+  width: 20vw;
+  padding-top: 2vw;
+}
+
+.p2 {
+  width: 100vw;
+  height: calc(100vw * (21 / 29.7));
+  background-color: var(--thrid-color);
+  font-size: 1.5vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.p2 h1,
+.p2 h2,
+.p2 h3 {
+  color: #ff6c6c;
+}
+
+.p2-header {
+  width: 100%;
+  height: 13%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* .p2-header h1, */
+.p2-header h1 {
+  margin: 0;
+  padding: 0;
+}
+
+.p2-header-text {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.7vw;
+}
+
+/* .p2-body-old {
+  height: 82%;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  background-color: #fdcbae;
+} */
+
+/* .p2-body-left {
+  width: calc(100% / 3);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background-color: #724c36;
+} */
+
+.figures-container p,
+.figures-container h3 {
+  padding: 0.6vw;
+  margin: 0px;
+}
+
+/* .p2-body-centre {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: calc(100% / 3);
+  height: 100%;
+  background-color: #c29379;
+} */
+
+.salary-data {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* flex-direction: row; */
+  /* background-color: antiquewhite; */
+}
+
+/* .salary-data p {
+    padding: 0.5vw;
+  } */
+
+.salary-gap {
+  width: 1vw;
+}
+
+.pie-container {
+  width: 60%;
+  background-color: aqua;
+}
+
+/* .p2-body-right {
+  width: calc(100% / 3);
+  height: 100%;
+  background-color: #967c6e;
+} */
+
+.p2-footer {
+  width: 100%;
+  height: 8%;
+  /* background-color: antiquewhite; */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: baseline;
+}
+
+.far {
+  width: 20vw;
+  background-color: aqua;
+}
+
+.logo-footer {
+  width: 10vw;
+  padding-left: 2vw;
+}
+
+.p2-body-top {
+  display: flex;
+  width: 80%;
+  height: 25%;
+  /* background-color: aquamarine; */
+  /* align-items: baseline; */
+  align-items: center;
+  justify-content: center;
+}
+
+.salary-container {
+  width: 50%;
+  /* background-color: aqua; */
+}
+
+.gender-container {
+  width: 50%;
+}
+
+.p2-body-middle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 45%;
+  width: 90%;
+  /* background-color: #fdcbae; */
+}
+
+.p2-body {
+  height: 79%;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+
+  /* background-color: #fdcbae; */
+}
+
+.p2 li,
+.p2 p {
+  font-size: 2vw;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.p2 h3 {
+  font-size: 2.3vw;
+}
+
+.figures-container {
+  /* background-color: aquamarine; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 15vw;
+  height: 15vw;
+  border-radius: 50%;
+  border: 0.2vw solid #000000;
+  /* margin-bottom: 5vw; */
+  /* background-color: red; */
+}
+
+.p2-body-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 25%;
+  width: 80%;
+  /* background-color: #fdcbae; */
+}
+
+.skills-container {
+  width: 50%;
+  /* background-color: beige; */
+  display: flex;
+  justify-content: center;
+}
+
+.skills {
+  width: 70%;
+  /* background-color: aquamarine; */
+}
+
+.skills ul {
+  /* text-align: left; */
+}
+
+.employers-container {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  /* background-color: rgb(226, 226, 99); */
+}
+
+.employers {
+  width: 58%;
+  /* background-color: aquamarine; */
+}
+
+.employers ul {
+  /* text-align: left; */
+}
