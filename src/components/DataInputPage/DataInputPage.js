@@ -1,9 +1,13 @@
 import "./DataInputPage.css";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import capitalizeFirstLetterOfEachWord from "../../capitalizeFirstLetterOfEachWord";
 
 function DataInputPage({ groupedInputState }) {
   // Destructure the groupedInputState object
+  const [jobTitleError, setJobTitleError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
   const {
     jobTitleS,
     cityS,
@@ -40,20 +44,24 @@ function DataInputPage({ groupedInputState }) {
   const navigate = useNavigate();
 
   const handleJobTitleChange = (event) => {
-    setJobTitle(event.target.value);
+    setJobTitle(capitalizeFirstLetterOfEachWord(event.target.value));
   };
 
   const handleCityChange = (event) => {
-    setCity(event.target.value);
+    setCity(capitalizeFirstLetterOfEachWord(event.target.value));
   };
 
   const handlePercentageMaleChange = (event) => {
     setPercentageMale(event.target.value);
+    setPercentageFemale(String(100 - event.target.value));
+    if (event.target.value === "") {
+      setPercentageFemale("");
+    }
   };
 
-  const handlePercentageFemaleChange = (event) => {
-    setPercentageFemale(event.target.value);
-  };
+  // const handlePercentageFemaleChange = (event) => {
+  //   setPercentageFemale(event.target.value);
+  // };
 
   const handleNumProfessionalsChange = (event) => {
     setNumProfessionals(event.target.value);
@@ -70,11 +78,30 @@ function DataInputPage({ groupedInputState }) {
   };
 
   const getJobData = () => {
-    console.log("fetching data, please wait");
+    setServerError("");
+    setJobTitleError("");
 
-    setSearchCity(city);
+    if (city === "") {
+      setCity("UK");
+      setSearchCity("UK");
+    } else {
+      setSearchCity(city);
+    }
+
     setSearchJobTitle(jobTitle);
     setJobData(["", "", "", "", "", "", "", ""], []);
+    console.log(searchJobTitle);
+
+    if (
+      !jobTitleSuggestions.includes(capitalizeFirstLetterOfEachWord(jobTitle))
+    ) {
+      console.log("not in list");
+      setJobTitleError("Please select a Job Title from the list");
+
+      return;
+    }
+
+    setIsLoading(true);
 
     fetch(
       `https://data-scraper-web-service.onrender.com/job_data?job_title=${encodeURIComponent(
@@ -83,16 +110,17 @@ function DataInputPage({ groupedInputState }) {
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log();
         if ("error" in data) {
           setServerError(data["error"]);
-          console.log(serverError);
-          navigate("/CC-Market-Insights-Report/");
+          setIsLoading(false);
         } else {
+          // if (isLoading === true) {
+          navigate("/CC-Market-Insights-Report/Report");
           setJobData(data);
           const skills = data[1].map((skill) => skill[2]);
           setTopSkills(skills);
-          setServerError("");
+          setIsLoading(false);
+          // }
         }
       })
       .catch((error) => {
@@ -113,8 +141,20 @@ function DataInputPage({ groupedInputState }) {
       });
   }, []); // Empty dependency array ensures useEffect runs only once on component mount
 
+  if (isLoading) {
+    return (
+      <div className="data-input-page">
+        <h2>Loading...</h2>
+        <p>
+          Note: It may take about a minute to get the data as the server needs
+          to 'reboot'
+        </p>
+      </div>
+    );
+  }
+
   return (
-    <div>
+    <div className="data-input-page">
       <h1>Job Data</h1>
       <div>
         <h4>Required Variables for the search (cannot be blank):</h4>
@@ -132,6 +172,9 @@ function DataInputPage({ groupedInputState }) {
             <option key={index} value={city} />
           ))}
         </datalist>
+        <div className="error-message">
+          <h4>{jobTitleError}</h4>
+        </div>
       </div>
       <div>
         <label htmlFor="city">City*:</label>
@@ -149,8 +192,8 @@ function DataInputPage({ groupedInputState }) {
           ))}
         </datalist>
       </div>
-      <div>
-        <p>Error: {serverError}</p>
+      <div className="error-message">
+        <h4>{serverError}</h4>
       </div>
       <div>
         <h4>Manual inputs:</h4>
@@ -164,12 +207,13 @@ function DataInputPage({ groupedInputState }) {
       </div>
       <div>
         <label htmlFor="percentageFemale">Percentage Female:</label>
-        <input
+        <p>{percentageFemale}</p>
+        {/* <input
           type="text"
           id="percentageFemale"
           value={percentageFemale}
           onChange={handlePercentageFemaleChange}
-        />
+        /> */}
       </div>
       <div>
         <label htmlFor="numProfessionals">Number of Professionals:</label>
@@ -182,7 +226,7 @@ function DataInputPage({ groupedInputState }) {
       </div>
 
       <div>
-        <label htmlFor="tenure">Tenure:</label>
+        <label htmlFor="tenure">Tenure (in number of years):</label>
         <input
           type="text"
           id="tenure"
@@ -203,13 +247,7 @@ function DataInputPage({ groupedInputState }) {
           </div>
         ))}
       </div>
-      <Link to="/CC-Market-Insights-Report/Report">
-        <button onClick={getJobData}>Get Job Data</button>
-      </Link>
-      <h3>
-        Note: It may take about a minute to get the data as the server needs to
-        'reboot'
-      </h3>
+      <button onClick={getJobData}>Get Job Data</button>
     </div>
   );
 }

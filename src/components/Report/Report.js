@@ -88,7 +88,7 @@ function Report({ groupedInputState }) {
             </div>
             <div className="figures-container">
               <h3>Tenure</h3>
-              <p>{tenure}</p>
+              <p>{tenure} years</p>
             </div>
             <div className="figures-container">
               <h3>Live Jobs</h3>

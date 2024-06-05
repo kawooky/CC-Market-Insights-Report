@@ -13,7 +13,11 @@ body {
   text-align: center;
   margin: 0;
   padding: 0;
-  background-color: #ffffff;
+  background: linear-gradient(
+    to right,
+    var(--first-color),
+    var(--second-color)
+  );
   display: flex;
   flex-direction: column;
   overflow-x: hidden;

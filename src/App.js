@@ -19,7 +19,7 @@ function App() {
   const [searchJobTitle, setSearchJobTitle] = useState("");
   const [percentageMale, setPercentageMale] = useState("60");
   const [percentageFemale, setPercentageFemale] = useState("40");
-  const [tenure, setTenure] = useState("4 years");
+  const [tenure, setTenure] = useState("4");
   const [employer, setEmployer] = useState([
     "CTA",
     "Corecom",
