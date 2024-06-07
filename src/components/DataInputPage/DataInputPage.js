@@ -156,96 +156,105 @@ function DataInputPage({ groupedInputState }) {
   return (
     <div className="data-input-page">
       <h1>Job Data</h1>
-      <div>
+      <div className="form">
         <h4>Required Variables for the search (cannot be blank):</h4>
-        <label htmlFor="job-title">JobTitle*:</label>
-        <input
-          type="text"
-          id="job-title"
-          value={jobTitle}
-          onChange={handleJobTitleChange}
-          list="jobTitleSuggestions"
-          required
-        />
-        <datalist id="jobTitleSuggestions">
-          {jobTitleSuggestions.map((city, index) => (
-            <option key={index} value={city} />
-          ))}
-        </datalist>
+        <div className="label-and-input">
+          <label htmlFor="job-title">JobTitle*:</label>
+          <input
+            type="text"
+            id="job-title"
+            value={jobTitle}
+            onChange={handleJobTitleChange}
+            list="jobTitleSuggestions"
+            required
+          />
+          <datalist id="jobTitleSuggestions">
+            {jobTitleSuggestions.map((city, index) => (
+              <option key={index} value={city} />
+            ))}
+          </datalist>
+        </div>
+
         <div className="error-message">
           <h4>{jobTitleError}</h4>
         </div>
-      </div>
-      <div>
-        <label htmlFor="city">City*:</label>
-        <input
-          type="text"
-          id="city"
-          value={city}
-          onChange={handleCityChange}
-          list="citySuggestions"
-          required
-        />
-        <datalist id="citySuggestions">
-          {citySuggestions.map((city, index) => (
-            <option key={index} value={city} />
-          ))}
-        </datalist>
-      </div>
-      <div className="error-message">
-        <h4>{serverError}</h4>
-      </div>
-      <div>
-        <h4>Manual inputs:</h4>
-        <label htmlFor="percentageMale">Percentage Male:</label>
-        <input
-          type="text"
-          id="percentageMale"
-          value={percentageMale}
-          onChange={handlePercentageMaleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="percentageFemale">Percentage Female:</label>
-        <p>{percentageFemale}</p>
-        {/* <input
+        <div>
+          <div className="label-and-input">
+            <label htmlFor="city">City*:</label>
+            <input
+              type="text"
+              id="city"
+              value={city}
+              onChange={handleCityChange}
+              list="citySuggestions"
+              required
+            />
+            <datalist id="citySuggestions">
+              {citySuggestions.map((city, index) => (
+                <option key={index} value={city} />
+              ))}
+            </datalist>
+          </div>
+        </div>
+        <div className="error-message">
+          <h4>{serverError}</h4>
+        </div>
+        <div>
+          <h4>Manual inputs:</h4>
+          <div className="label-and-input">
+            <label htmlFor="percentageMale">Percentage Male:</label>
+            <input
+              type="text"
+              id="percentageMale"
+              value={percentageMale}
+              onChange={handlePercentageMaleChange}
+            />
+          </div>
+        </div>
+        <div>
+          <div className="label-and-input">
+            <label htmlFor="percentageFemale">Percentage Female:</label>
+            <p className="percentage-female">{percentageFemale}</p>
+            {/* <input
           type="text"
           id="percentageFemale"
           value={percentageFemale}
           onChange={handlePercentageFemaleChange}
         /> */}
-      </div>
-      <div>
-        <label htmlFor="numProfessionals">Number of Professionals:</label>
-        <input
-          type="text"
-          id="numProfessionals"
-          value={numProfessionals}
-          onChange={handleNumProfessionalsChange}
-        />
-      </div>
-
-      <div>
-        <label htmlFor="tenure">Tenure (in number of years):</label>
-        <input
-          type="text"
-          id="tenure"
-          value={tenure}
-          onChange={handleTenureChange}
-        />
-      </div>
-      <div>
-        {[1, 2, 3, 4, 5].map((number, index) => (
-          <div key={index}>
-            <label htmlFor={`employer${number}`}>Employer {number}:</label>
-            <input
-              type="text"
-              id={`employer${number}`}
-              value={employer[index]}
-              onChange={(event) => handleEmployerChange(index, event)}
-            />
           </div>
-        ))}
+        </div>
+        <div className="label-and-input">
+          <label htmlFor="numProfessionals">Number of Professionals:</label>
+          <input
+            type="text"
+            id="numProfessionals"
+            value={numProfessionals}
+            onChange={handleNumProfessionalsChange}
+          />
+        </div>
+
+        <div className="label-and-input">
+          <label htmlFor="tenure">Tenure (years):</label>
+          <input
+            type="text"
+            id="tenure"
+            value={tenure}
+            onChange={handleTenureChange}
+          />
+        </div>
+        <div>
+          {[1, 2, 3, 4, 5].map((number, index) => (
+            <div className="label-and-input" key={index}>
+              <label htmlFor={`employer${number}`}>Employer {number}:</label>
+              <input
+                type="text"
+                id={`employer${number}`}
+                value={employer[index]}
+                onChange={(event) => handleEmployerChange(index, event)}
+              />
+            </div>
+          ))}
+        </div>
       </div>
       <button onClick={getJobData}>Get Job Data</button>
     </div>
